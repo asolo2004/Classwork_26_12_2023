@@ -1,0 +1,56 @@
+6 задача:
+class Solution {
+public:
+    int minimumDifference(vector<int>& nums, int k) {
+     int n = nums.size();   
+    std::sort(nums.begin(), nums.end());
+
+    int minDiff = INT_MAX;
+    for (int i = 0; i <= n - k; ++i) {
+        minDiff = std::min(minDiff, nums[i + k - 1] - nums[i]);
+    }
+
+    return minDiff;   
+    }
+};
+7 задача:
+class Solution {
+public:
+    int findLucky(vector<int>& arr) {
+            sort(arr.begin(), arr.end());
+    int maxLucky = -1;
+    int count = 1;
+    for (int i = 1; i <= arr.size(); ++i) {
+        if (i == arr.size() || arr[i] != arr[i-1]) {
+            if (count == arr[i-1]) {
+                maxLucky = count;
+            }
+            count = 1;
+        } else {
+            count++;
+        }
+    }
+    return maxLucky;
+    }
+};
+8 задача:
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+            int ans = nums[0];
+            int count = 1;
+
+    for (int i = 1; i < nums.size(); i++) {
+        if (count == 0) {
+            ans = nums[i];
+            count = 1;
+        } else if (nums[i] == ans) {
+            count++;
+        } else {
+            count--;
+        }
+    }
+    return ans;
+}
+
+};
